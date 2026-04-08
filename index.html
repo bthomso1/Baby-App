@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -34,100 +35,107 @@ button{font-family:var(--ff);cursor:pointer;border:none;background:none;-webkit-
 
 /* Header */
 .hdr{text-align:center;margin-bottom:4px}
-.hdr h1{font-family:var(--fd);font-size:28px;font-weight:700;letter-spacing:-.5px;color:var(--ink)}
-.hdr p{font-size:11px;color:var(--sub);margin-top:4px;font-weight:500}
+.hdr h1{font-family:var(–fd);font-size:28px;font-weight:700;letter-spacing:-.5px;color:var(–ink)}
+.hdr p{font-size:11px;color:var(–sub);margin-top:4px;font-weight:500}
 
 /* Nav */
 .nav{display:flex;gap:3px;background:rgba(255,255,255,.5);border-radius:11px;padding:3px;margin:10px 0 16px}
-.nav button{padding:8px 14px;border-radius:9px;font-size:13px;font-weight:600;color:var(--sub2);transition:all .2s}
-.nav button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(100,50,80,.1)}
+.nav button{padding:8px 14px;border-radius:9px;font-size:13px;font-weight:600;color:var(–sub2);transition:all .2s}
+.nav button.on{background:#fff;color:var(–ink);box-shadow:0 2px 8px rgba(100,50,80,.1)}
 
 /* Pick view */
 .pick-wrap{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;flex:1}
-.prompt{font-family:var(--fd);font-size:18px;color:var(--ink2);margin-bottom:18px;font-weight:600;text-align:center}
+.prompt{font-family:var(–fd);font-size:18px;color:var(–ink2);margin-bottom:18px;font-weight:600;text-align:center}
 .vs{display:flex;gap:12px;width:100%;margin-bottom:10px}
 .card-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
 .card{
-  width:100%;min-height:120px;border-radius:18px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;padding:16px 10px;gap:5px;
-  box-shadow:0 4px 18px rgba(100,50,80,.1);
-  transition:all .25s cubic-bezier(.34,1.56,.64,1);
+width:100%;min-height:120px;border-radius:18px;display:flex;flex-direction:column;
+align-items:center;justify-content:center;padding:16px 10px;gap:5px;
+box-shadow:0 4px 18px rgba(100,50,80,.1);
+transition:all .25s cubic-bezier(.34,1.56,.64,1);
 }
-.card.left{background:linear-gradient(135deg,#fff 0%,var(--cardL) 100%)}
-.card.right{background:linear-gradient(135deg,#fff 0%,var(--cardR) 100%)}
+.card.left{background:linear-gradient(135deg,#fff 0%,var(–cardL) 100%)}
+.card.right{background:linear-gradient(135deg,#fff 0%,var(–cardR) 100%)}
 .card.win{transform:scale(1.05);box-shadow:0 8px 28px rgba(100,50,80,.18)}
 .card.lose{transform:scale(.92);opacity:.35}
-.card-name{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--ink);text-align:center}
-.card-var{font-size:10px;color:var(--sub3);font-weight:500}
+.card-name{font-family:var(–fd);font-size:22px;font-weight:700;color:var(–ink);text-align:center}
+.card-var{font-size:10px;color:var(–sub3);font-weight:500}
 .heart-btn{
-  background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;font-size:17px;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 1px 4px rgba(100,50,80,.06);transition:transform .15s;color:var(--heartOff);
+background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;font-size:17px;
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 1px 4px rgba(100,50,80,.06);transition:transform .15s;color:var(–heartOff);
 }
-.heart-btn.on{color:var(--heart)}
+.heart-btn.on{color:var(–heart)}
+.elim-btn{
+background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;font-size:14px;
+display:flex;align-items:center;justify-content:center;font-weight:700;
+box-shadow:0 1px 4px rgba(100,50,80,.06);transition:transform .15s;color:#c0a0a0;
+}
+.card-actions{display:flex;gap:6px}
 .neither-btn{
-  border:1px solid rgba(180,100,100,.2);background:var(--white40);
-  color:#a07070;padding:10px 24px;border-radius:11px;font-size:13px;font-weight:600;
-  margin-bottom:20px;transition:all .2s;
+border:1px solid rgba(180,100,100,.2);background:var(–white40);
+color:#a07070;padding:10px 24px;border-radius:11px;font-size:13px;font-weight:600;
+margin-bottom:20px;transition:all .2s;
 }
 .neither-btn.pop{background:rgba(200,100,100,.12);transform:scale(.96)}
 .prog-bg{width:100%;height:5px;background:rgba(255,255,255,.5);border-radius:3px;overflow:hidden}
-.prog-fg{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .4s}
-.prog-txt{font-size:11px;color:var(--sub);font-weight:500;margin-top:5px}
+.prog-fg{height:100%;background:linear-gradient(90deg,var(–accent),var(–accent2));border-radius:3px;transition:width .4s}
+.prog-txt{font-size:11px;color:var(–sub);font-weight:500;margin-top:5px}
 
 /* List views */
 .list-wrap{width:100%;max-width:420px;flex:1}
-.list-hdr{font-size:13px;color:var(--sub2);margin-bottom:10px;font-weight:500}
-.row{background:var(--white60);border-radius:13px;padding:10px 12px;margin-bottom:5px;display:flex;flex-direction:column;gap:4px}
+.list-hdr{font-size:13px;color:var(–sub2);margin-bottom:10px;font-weight:500}
+.row{background:var(–white60);border-radius:13px;padding:10px 12px;margin-bottom:5px;display:flex;flex-direction:column;gap:4px}
 .row-top{display:flex;align-items:center;gap:7px}
-.row-rank{font-size:12px;font-weight:700;color:var(--sub3);width:20px;text-align:right;flex-shrink:0}
+.row-rank{font-size:12px;font-weight:700;color:var(–sub3);width:20px;text-align:right;flex-shrink:0}
 .row-rank.g{color:#c5952e}.row-rank.s{color:#8a8a8e}.row-rank.b{color:#a06a40}
-.row-name{font-family:var(--fd);font-size:16px;font-weight:600;color:var(--ink)}
-.row-heart{font-size:16px;padding:2px 3px;color:var(--heartOff)}
-.row-heart.on{color:var(--heart)}
+.row-name{font-family:var(–fd);font-size:16px;font-weight:600;color:var(–ink)}
+.row-heart{font-size:16px;padding:2px 3px;color:var(–heartOff)}
+.row-heart.on{color:var(–heart)}
 .row-x{font-size:13px;padding:2px 5px;color:#c0a0a0;font-weight:700}
 .bar-bg{height:4px;background:rgba(180,140,170,.12);border-radius:2px;overflow:hidden}
-.bar-fg{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width .3s}
+.bar-fg{height:100%;background:linear-gradient(90deg,var(–accent),var(–accent2));border-radius:2px;transition:width .3s}
 .row-bot{display:flex;align-items:center;justify-content:space-between}
-.row-score{font-size:10px;color:var(--sub3);font-weight:600}
+.row-score{font-size:10px;color:var(–sub3);font-weight:600}
 .spell-link{font-size:10px;color:#8a6aaa;font-weight:600;padding:0}
 
 /* Spelling view */
-.back-btn{color:var(--sub2);font-size:14px;font-weight:600;padding:4px 0;margin-bottom:10px}
-.spell-title{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px}
-.spell-sub{font-size:13px;color:var(--sub);margin-bottom:14px}
+.back-btn{color:var(–sub2);font-size:14px;font-weight:600;padding:4px 0;margin-bottom:10px}
+.spell-title{font-family:var(–fd);font-size:22px;font-weight:700;color:var(–ink);margin-bottom:4px}
+.spell-sub{font-size:13px;color:var(–sub);margin-bottom:14px}
 .spell-opt{
-  border:1px solid rgba(160,128,192,.2);background:rgba(255,255,255,.6);border-radius:13px;
-  padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;
-  box-shadow:0 2px 6px rgba(100,50,80,.05);transition:all .2s;width:100%;text-align:left;
+border:1px solid rgba(160,128,192,.2);background:rgba(255,255,255,.6);border-radius:13px;
+padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;
+box-shadow:0 2px 6px rgba(100,50,80,.05);transition:all .2s;width:100%;text-align:left;
 }
 .spell-opt.chosen{background:rgba(160,100,180,.1);border-color:rgba(140,90,170,.35)}
-.spell-opt span:first-child{font-family:var(--fd);font-size:19px;font-weight:600;color:var(--ink)}
+.spell-opt span:first-child{font-family:var(–fd);font-size:19px;font-weight:600;color:var(–ink)}
 .spell-check{font-size:18px;color:#8a6aaa;font-weight:700}
 
 /* Shared */
 .empty{text-align:center;padding:36px 20px}
 .empty-icon{font-size:40px;margin-bottom:8px}
-.empty-txt{font-size:14px;color:var(--sub2);line-height:1.5;margin-bottom:16px}
+.empty-txt{font-size:14px;color:var(–sub2);line-height:1.5;margin-bottom:16px}
 .cta{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;padding:11px 28px;border-radius:11px;font-size:14px;font-weight:600;
+background:linear-gradient(135deg,var(–accent),var(–accent2));
+color:#fff;padding:11px 28px;border-radius:11px;font-size:14px;font-weight:600;
 }
 .more-btn{
-  border:1px solid rgba(160,128,192,.25);background:rgba(255,255,255,.45);
-  color:#7a5a8a;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;
-  margin-top:8px;width:100%;
+border:1px solid rgba(160,128,192,.25);background:rgba(255,255,255,.45);
+color:#7a5a8a;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;
+margin-top:8px;width:100%;
 }
 .footer{
-  display:flex;align-items:center;justify-content:space-between;
-  width:100%;max-width:420px;margin-top:18px;padding-top:12px;
-  border-top:1px solid rgba(160,128,170,.15);
+display:flex;align-items:center;justify-content:space-between;
+width:100%;max-width:420px;margin-top:18px;padding-top:12px;
+border-top:1px solid rgba(160,128,170,.15);
 }
-.foot-note{font-size:10px;color:var(--sub3)}
+.foot-note{font-size:10px;color:var(–sub3)}
 .reset-btn{color:#c08a8a;font-size:12px;font-weight:600;padding:4px 8px}
 
 .hidden{display:none!important}
 </style>
+
 </head>
 <body>
 
@@ -143,16 +151,23 @@ button{font-family:var(--ff);cursor:pointer;border:none;background:none;-webkit-
 </div>
 
 <!-- COMPARE -->
+
 <div class="pick-wrap" id="viewPick">
   <p class="prompt">Which name do you prefer?</p>
   <div class="vs">
     <div class="card-col">
       <button class="card left" id="cardL"><span class="card-name" id="nameL"></span><span class="card-var" id="varL"></span></button>
-      <button class="heart-btn" id="heartL">♡</button>
+      <div class="card-actions">
+        <button class="heart-btn" id="heartL">♡</button>
+        <button class="elim-btn" id="elimL">✕</button>
+      </div>
     </div>
     <div class="card-col">
       <button class="card right" id="cardR"><span class="card-name" id="nameR"></span><span class="card-var" id="varR"></span></button>
-      <button class="heart-btn" id="heartR">♡</button>
+      <div class="card-actions">
+        <button class="heart-btn" id="heartR">♡</button>
+        <button class="elim-btn" id="elimR">✕</button>
+      </div>
     </div>
   </div>
   <button class="neither-btn" id="neitherBtn">Neither — eliminate both</button>
@@ -166,12 +181,15 @@ button{font-family:var(--ff);cursor:pointer;border:none;background:none;-webkit-
 </div>
 
 <!-- RANKINGS -->
+
 <div class="list-wrap hidden" id="viewRanks"></div>
 
 <!-- FAVORITES -->
+
 <div class="list-wrap hidden" id="viewFavs"></div>
 
 <!-- SPELLING -->
+
 <div class="list-wrap hidden" id="viewSpell"></div>
 
 <div class="footer">
@@ -260,6 +278,7 @@ const $=id=>document.getElementById(id);
 const statsLine=$('statsLine'),favTab=$('favTab'),footNote=$('footNote');
 const cardL=$('cardL'),cardR=$('cardR'),nameL=$('nameL'),nameR=$('nameR'),varL=$('varL'),varR=$('varR');
 const heartL=$('heartL'),heartR=$('heartR'),neitherBtn=$('neitherBtn');
+const elimL=$('elimL'),elimR=$('elimR');
 const progBar=$('progBar'),progTxt=$('progTxt');
 const viewPick=$('viewPick'),pickEmpty=$('pickEmpty');
 const viewRanks=$('viewRanks'),viewFavs=$('viewFavs'),viewSpell=$('viewSpell');
@@ -311,6 +330,27 @@ function doNeither(){
     state.elim[pair[0]]=1;state.elim[pair[1]]=1;
     delete state.favs[pair[0]];delete state.favs[pair[1]];
     save();pair=pick();renderPair();updateStats();animLock=false;
+  },250);
+}
+
+function elimOne(side){
+  if(!pair||animLock)return;animLock=true;
+  const idx=side==='left'?0:1;
+  const card=side==='left'?cardL:cardR;
+  const gone=pair[idx], keep=pair[1-idx];
+  card.classList.add('lose');
+  setTimeout(()=>{
+    state.elim[gone]=1;delete state.favs[gone];
+    state.ratings[gone]=(state.ratings[gone]||1000)-16;
+    save();
+    // Find a replacement that isn't the kept name
+    const p=pool().filter(n=>n!==keep);
+    if(p.length===0){pair=null;}
+    else{
+      const replacement=p[Math.floor(Math.random()*p.length)];
+      pair=side==='left'?[replacement,keep]:[keep,replacement];
+    }
+    renderPair();updateStats();animLock=false;
   },250);
 }
 
@@ -424,6 +464,8 @@ cardL.addEventListener('click',()=>doPick('left'));
 cardR.addEventListener('click',()=>doPick('right'));
 heartL.addEventListener('click',e=>{e.stopPropagation();if(pair)toggleFav(pair[0]);renderPair();});
 heartR.addEventListener('click',e=>{e.stopPropagation();if(pair)toggleFav(pair[1]);renderPair();});
+elimL.addEventListener('click',e=>{e.stopPropagation();elimOne('left');});
+elimR.addEventListener('click',e=>{e.stopPropagation();elimOne('right');});
 neitherBtn.addEventListener('click',doNeither);
 $('resetBtn').addEventListener('click',()=>{
   if(confirm('Reset everything?')){
@@ -441,5 +483,6 @@ window.renderRanks=renderRanks;
 // ── Init ──
 load();pair=pick();renderPair();updateStats();
 </script>
+
 </body>
 </html>
