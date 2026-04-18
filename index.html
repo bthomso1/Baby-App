@@ -12,162 +12,110 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --bg1:#fdf6f0;--bg2:#fce8e4;--bg3:#f0dde8;--bg4:#e8daf0;
   --ink:#4a2c3d;--ink2:#5a3a4a;--sub:#9a7b8a;--sub2:#8a6a7a;--sub3:#b09aaa;
   --accent:#d4a0a0;--accent2:#a080c0;--heart:#d4506a;--heartOff:#c0a8b0;
   --cardL:#fce8ea;--cardR:#e8e4fc;
   --white60:rgba(255,255,255,0.55);--white40:rgba(255,255,255,0.4);
   --ff:"DM Sans",sans-serif;--fd:"Playfair Display",Georgia,serif;
-  --safe-top:env(safe-area-inset-top,0px);
-  --safe-bot:env(safe-area-inset-bottom,0px);
+  --safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow-x:hidden}
-body{
-  font-family:var(--ff);color:var(--ink);
-  background:linear-gradient(170deg,var(--bg1) 0%,var(--bg2) 35%,var(--bg3) 70%,var(--bg4) 100%);
-  min-height:100vh;min-height:100dvh;
-  padding:calc(20px + var(--safe-top)) 16px calc(32px + var(--safe-bot));
-  display:flex;flex-direction:column;align-items:center;
-}
+body{font-family:var(--ff);color:var(--ink);background:linear-gradient(170deg,var(--bg1) 0%,var(--bg2) 35%,var(--bg3) 70%,var(--bg4) 100%);min-height:100vh;min-height:100dvh;padding:calc(20px + var(--safe-top)) 16px calc(32px + var(--safe-bot));display:flex;flex-direction:column;align-items:center}
 button{font-family:var(--ff);cursor:pointer;border:none;background:none;-webkit-appearance:none}
-
-/* Header */
 .hdr{text-align:center;margin-bottom:4px}
-.hdr h1{font-family:var(–fd);font-size:28px;font-weight:700;letter-spacing:-.5px;color:var(–ink)}
-.hdr p{font-size:11px;color:var(–sub);margin-top:4px;font-weight:500}
-
-/* Nav */
-.nav{display:flex;gap:3px;background:rgba(255,255,255,.5);border-radius:11px;padding:3px;margin:10px 0 16px}
-.nav button{padding:8px 14px;border-radius:9px;font-size:13px;font-weight:600;color:var(–sub2);transition:all .2s}
-.nav button.on{background:#fff;color:var(–ink);box-shadow:0 2px 8px rgba(100,50,80,.1)}
-
-/* Pick view */
+.hdr h1{font-family:var(--fd);font-size:28px;font-weight:700;letter-spacing:-.5px;color:var(--ink)}
+.hdr p{font-size:11px;color:var(--sub);margin-top:4px;font-weight:500}
+/* Gender filter */
+.gender-bar{display:flex;gap:3px;background:rgba(255,255,255,.45);border-radius:10px;padding:3px;margin:8px 0 4px}
+.gender-bar button{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;color:var(--sub2);transition:all .2s}
+.gender-bar button.on{background:#fff;color:var(--ink);box-shadow:0 1px 6px rgba(100,50,80,.08)}
+.nav{display:flex;gap:3px;background:rgba(255,255,255,.5);border-radius:11px;padding:3px;margin:4px 0 16px}
+.nav button{padding:8px 14px;border-radius:9px;font-size:13px;font-weight:600;color:var(--sub2);transition:all .2s}
+.nav button.on{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(100,50,80,.1)}
 .pick-wrap{width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;flex:1}
-.prompt{font-family:var(–fd);font-size:18px;color:var(–ink2);margin-bottom:18px;font-weight:600;text-align:center}
+.prompt{font-family:var(--fd);font-size:18px;color:var(--ink2);margin-bottom:18px;font-weight:600;text-align:center}
 .vs{display:flex;gap:12px;width:100%;margin-bottom:10px}
 .card-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
-.card{
-width:100%;min-height:120px;border-radius:18px;display:flex;flex-direction:column;
-align-items:center;justify-content:center;padding:16px 10px;gap:5px;
-box-shadow:0 4px 18px rgba(100,50,80,.1);
-transition:all .25s cubic-bezier(.34,1.56,.64,1);
-}
-.card.left{background:linear-gradient(135deg,#fff 0%,var(–cardL) 100%)}
-.card.right{background:linear-gradient(135deg,#fff 0%,var(–cardR) 100%)}
+.card{width:100%;min-height:120px;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 10px;gap:5px;box-shadow:0 4px 18px rgba(100,50,80,.1);transition:all .25s cubic-bezier(.34,1.56,.64,1)}
+.card.left{background:linear-gradient(135deg,#fff 0%,var(--cardL) 100%)}
+.card.right{background:linear-gradient(135deg,#fff 0%,var(--cardR) 100%)}
 .card.win{transform:scale(1.05);box-shadow:0 8px 28px rgba(100,50,80,.18)}
 .card.lose{transform:scale(.92);opacity:.35}
-.card-name{font-family:var(–fd);font-size:22px;font-weight:700;color:var(–ink);text-align:center}
-.card-var{font-size:10px;color:var(–sub3);font-weight:500}
-.heart-btn{
-background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;font-size:17px;
-display:flex;align-items:center;justify-content:center;
-box-shadow:0 1px 4px rgba(100,50,80,.06);transition:transform .15s;color:var(–heartOff);
-}
-.heart-btn.on{color:var(–heart)}
-.elim-btn{
-background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;font-size:14px;
-display:flex;align-items:center;justify-content:center;font-weight:700;
-box-shadow:0 1px 4px rgba(100,50,80,.06);transition:transform .15s;color:#c0a0a0;
-}
+.card-name{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--ink);text-align:center}
+.card-var{font-size:10px;color:var(--sub3);font-weight:500}
 .card-actions{display:flex;gap:6px}
-.neither-btn{
-border:1px solid rgba(180,100,100,.2);background:var(–white40);
-color:#a07070;padding:10px 24px;border-radius:11px;font-size:13px;font-weight:600;
-margin-bottom:20px;transition:all .2s;
-}
+.heart-btn{background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(100,50,80,.06);transition:transform .15s;color:var(--heartOff)}
+.heart-btn.on{color:var(--heart)}
+.elim-btn{background:rgba(255,255,255,.6);width:32px;height:32px;border-radius:50%;font-size:14px;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 1px 4px rgba(100,50,80,.06);transition:transform .15s;color:#c0a0a0}
+.neither-btn{border:1px solid rgba(180,100,100,.2);background:var(--white40);color:#a07070;padding:10px 24px;border-radius:11px;font-size:13px;font-weight:600;margin-bottom:20px;transition:all .2s}
 .neither-btn.pop{background:rgba(200,100,100,.12);transform:scale(.96)}
 .prog-bg{width:100%;height:5px;background:rgba(255,255,255,.5);border-radius:3px;overflow:hidden}
-.prog-fg{height:100%;background:linear-gradient(90deg,var(–accent),var(–accent2));border-radius:3px;transition:width .4s}
-.prog-txt{font-size:11px;color:var(–sub);font-weight:500;margin-top:5px}
-
-/* List views */
+.prog-fg{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .4s}
+.prog-txt{font-size:11px;color:var(--sub);font-weight:500;margin-top:5px}
 .list-wrap{width:100%;max-width:420px;flex:1}
-.list-hdr{font-size:13px;color:var(–sub2);margin-bottom:10px;font-weight:500}
-.row{background:var(–white60);border-radius:13px;padding:10px 12px;margin-bottom:5px;display:flex;flex-direction:column;gap:4px}
+.list-hdr{font-size:13px;color:var(--sub2);margin-bottom:10px;font-weight:500}
+.row{background:var(--white60);border-radius:13px;padding:10px 12px;margin-bottom:5px;display:flex;flex-direction:column;gap:4px}
 .row-top{display:flex;align-items:center;gap:7px}
-.row-rank{font-size:12px;font-weight:700;color:var(–sub3);width:20px;text-align:right;flex-shrink:0}
+.row-rank{font-size:12px;font-weight:700;color:var(--sub3);width:20px;text-align:right;flex-shrink:0}
 .row-rank.g{color:#c5952e}.row-rank.s{color:#8a8a8e}.row-rank.b{color:#a06a40}
-.row-name{font-family:var(–fd);font-size:16px;font-weight:600;color:var(–ink)}
-.row-heart{font-size:16px;padding:2px 3px;color:var(–heartOff)}
-.row-heart.on{color:var(–heart)}
+.row-name{font-family:var(--fd);font-size:16px;font-weight:600;color:var(--ink)}
+.row-gender{font-size:10px;padding:1px 6px;border-radius:6px;font-weight:600}
+.row-gender.f{background:rgba(212,80,106,.1);color:#c06080}
+.row-gender.m{background:rgba(80,120,200,.1);color:#5080c0}
+.row-heart{font-size:16px;padding:2px 3px;color:var(--heartOff)}
+.row-heart.on{color:var(--heart)}
 .row-x{font-size:13px;padding:2px 5px;color:#c0a0a0;font-weight:700}
 .bar-bg{height:4px;background:rgba(180,140,170,.12);border-radius:2px;overflow:hidden}
-.bar-fg{height:100%;background:linear-gradient(90deg,var(–accent),var(–accent2));border-radius:2px;transition:width .3s}
+.bar-fg{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:width .3s}
 .row-bot{display:flex;align-items:center;justify-content:space-between}
-.row-score{font-size:10px;color:var(–sub3);font-weight:600}
+.row-score{font-size:10px;color:var(--sub3);font-weight:600}
 .spell-link{font-size:10px;color:#8a6aaa;font-weight:600;padding:0}
-
-/* Spelling view */
-.back-btn{color:var(–sub2);font-size:14px;font-weight:600;padding:4px 0;margin-bottom:10px}
-.spell-title{font-family:var(–fd);font-size:22px;font-weight:700;color:var(–ink);margin-bottom:4px}
-.spell-sub{font-size:13px;color:var(–sub);margin-bottom:14px}
-.spell-opt{
-border:1px solid rgba(160,128,192,.2);background:rgba(255,255,255,.6);border-radius:13px;
-padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;
-box-shadow:0 2px 6px rgba(100,50,80,.05);transition:all .2s;width:100%;text-align:left;
-}
+.back-btn{color:var(--sub2);font-size:14px;font-weight:600;padding:4px 0;margin-bottom:10px}
+.spell-title{font-family:var(--fd);font-size:22px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.spell-sub{font-size:13px;color:var(--sub);margin-bottom:14px}
+.spell-opt{border:1px solid rgba(160,128,192,.2);background:rgba(255,255,255,.6);border-radius:13px;padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(100,50,80,.05);transition:all .2s;width:100%;text-align:left}
 .spell-opt.chosen{background:rgba(160,100,180,.1);border-color:rgba(140,90,170,.35)}
-.spell-opt span:first-child{font-family:var(–fd);font-size:19px;font-weight:600;color:var(–ink)}
+.spell-opt span:first-child{font-family:var(--fd);font-size:19px;font-weight:600;color:var(--ink)}
 .spell-check{font-size:18px;color:#8a6aaa;font-weight:700}
-
-/* Shared */
 .empty{text-align:center;padding:36px 20px}
 .empty-icon{font-size:40px;margin-bottom:8px}
-.empty-txt{font-size:14px;color:var(–sub2);line-height:1.5;margin-bottom:16px}
-.cta{
-background:linear-gradient(135deg,var(–accent),var(–accent2));
-color:#fff;padding:11px 28px;border-radius:11px;font-size:14px;font-weight:600;
-}
-.more-btn{
-border:1px solid rgba(160,128,192,.25);background:rgba(255,255,255,.45);
-color:#7a5a8a;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;
-margin-top:8px;width:100%;
-}
-.footer{
-display:flex;align-items:center;justify-content:space-between;
-width:100%;max-width:420px;margin-top:18px;padding-top:12px;
-border-top:1px solid rgba(160,128,170,.15);
-}
-.foot-note{font-size:10px;color:var(–sub3)}
+.empty-txt{font-size:14px;color:var(--sub2);line-height:1.5;margin-bottom:16px}
+.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:11px 28px;border-radius:11px;font-size:14px;font-weight:600}
+.more-btn{border:1px solid rgba(160,128,192,.25);background:rgba(255,255,255,.45);color:#7a5a8a;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;margin-top:8px;width:100%}
+.footer{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:420px;margin-top:18px;padding-top:12px;border-top:1px solid rgba(160,128,170,.15)}
+.foot-note{font-size:10px;color:var(--sub3)}
 .reset-btn{color:#c08a8a;font-size:12px;font-weight:600;padding:4px 8px}
-
 .hidden{display:none!important}
 </style>
-
 </head>
 <body>
-
 <div class="hdr">
   <h1>Baby Name Picker</h1>
   <p id="statsLine">Loading...</p>
 </div>
-
+<div class="gender-bar" id="genderBar">
+  <button class="on" data-g="girl">Girl Names</button>
+  <button data-g="boy">Boy Names</button>
+  <button data-g="both">Both</button>
+</div>
 <div class="nav" id="nav">
   <button class="on" data-v="pick">Compare</button>
   <button data-v="ranks">Rankings</button>
   <button data-v="favs" id="favTab">Favs (0)</button>
 </div>
-
-<!-- COMPARE -->
-
 <div class="pick-wrap" id="viewPick">
   <p class="prompt">Which name do you prefer?</p>
   <div class="vs">
     <div class="card-col">
       <button class="card left" id="cardL"><span class="card-name" id="nameL"></span><span class="card-var" id="varL"></span></button>
-      <div class="card-actions">
-        <button class="heart-btn" id="heartL">♡</button>
-        <button class="elim-btn" id="elimL">✕</button>
-      </div>
+      <div class="card-actions"><button class="heart-btn" id="heartL">♡</button><button class="elim-btn" id="elimL">✕</button></div>
     </div>
     <div class="card-col">
       <button class="card right" id="cardR"><span class="card-name" id="nameR"></span><span class="card-var" id="varR"></span></button>
-      <div class="card-actions">
-        <button class="heart-btn" id="heartR">♡</button>
-        <button class="elim-btn" id="elimR">✕</button>
-      </div>
+      <div class="card-actions"><button class="heart-btn" id="heartR">♡</button><button class="elim-btn" id="elimR">✕</button></div>
     </div>
   </div>
   <button class="neither-btn" id="neitherBtn">Neither — eliminate both</button>
@@ -176,109 +124,86 @@ border-top:1px solid rgba(160,128,170,.15);
     <span class="prog-txt" id="progTxt">Keep going...</span>
   </div>
 </div>
-<div class="pick-wrap hidden" id="pickEmpty">
-  <div class="empty"><p class="empty-icon">🎉</p><p class="empty-txt">All names compared or eliminated!<br>Check Rankings or Favs.</p></div>
-</div>
-
-<!-- RANKINGS -->
-
+<div class="pick-wrap hidden" id="pickEmpty"><div class="empty"><p class="empty-icon">🎉</p><p class="empty-txt">No more names to compare!<br>Check Rankings or Favs.</p></div></div>
 <div class="list-wrap hidden" id="viewRanks"></div>
-
-<!-- FAVORITES -->
-
 <div class="list-wrap hidden" id="viewFavs"></div>
-
-<!-- SPELLING -->
-
 <div class="list-wrap hidden" id="viewSpell"></div>
-
 <div class="footer">
   <span class="foot-note" id="footNote"></span>
   <button class="reset-btn" id="resetBtn">Reset All</button>
 </div>
 
 <script>
-// ── Names ──
-const RAW=["Olivia","Emma","Charlotte","Amelia","Sophia","Mia","Isabella","Ava","Evelyn","Luna","Harper","Sofia","Camila","Eleanor","Elizabeth","Violet","Scarlett","Emily","Hazel","Aria","Penelope","Chloe","Layla","Mila","Nora","Avery","Riley","Ivy","Lily","Aurora","Willow","Ella","Zoey","Isla","Hannah","Ellie","Stella","Gianna","Paisley","Audrey","Nova","Brooklyn","Bella","Claire","Skylar","Lucy","Savannah","Leah","Naomi","Eliana","Elena","Aaliyah","Lillian","Addison","Natalie","Valentina","Alice","Madelyn","Josephine","Maya","Kinsley","Delilah","Ruby","Kennedy","Emilia","Gabriella","Allison","Hailey","Aubrey","Autumn","Sadie","Nevaeh","Serenity","Genesis","Cora","Everleigh","Caroline","Ariana","Peyton","Madeline","Vivian","Quinn","Kaylee","Lydia","Ayla","Piper","Abigail","Raelynn","Sarah","Jade","Eva","Victoria","Adalynn","Rylee","Liliana","Samantha","Melody","Maria","Brielle","Reagan","Leilani","Adeline","Lucia","Emery","Anna","Athena","Arya","Eloise","Natalia","Clara","Iris","Remi","Rose","London","Lyla","Everly","Catalina","Maeve","Adalyn","Isabelle","Brianna","Zoe","Juliette","Alina","Julia","Sophie","Oakley","Eliza","Millie","Daisy","Margot","Esme","Freya","Ada","Sienna","Bailey","Reese","Diana","Isabel","Hadley","Lola","Cecilia","Juniper","Anastasia","Juliana","Sage","Magnolia","Lena","Phoebe","Genevieve","Journee","Ember","Wren","Elsie","Amara","Sloane","Vivienne","Alaia","Gemma","Dahlia","Vera","Eden","Kaia","Harmony","Thea","Tessa","Charlie","Arabella","Daniela","Ximena","Alexis","Brynlee","Arianna","Finley","Palmer","Lennon","Blake","Olive","Rosalie","Norah","Molly","Presley","Fiona","Margaret","Georgia","June","Willa","Harley","Cali","River","Aspen","Gracie","Elliana","Saylor","Raya","Maia","Callie","Zara","Leila","Marley","Gia","Camille","Teagan","Leia","Adelaide","Serena","Winter","Lyric","Esmeralda","Amira","Myla","Alyssa","Lila","Paige","Brooke","Paris","Jordyn","McKenzie","Ruth","Hayden","Shelby","Vanessa","Raegan","Keira","Ariel","Taylor","Alana","Annalise","Rosemary","Lainey","Kali","Amy","Angelina","Alondra","Braelynn","Dream","Amora","Miracle","Talia","Tatum","Mabel","Hope","Sutton","Celeste","Ariella","Daphne","Ari","Kaylani","Marina","April","Alessandra","Dakota","Hallie","Kyla","Raven","Lexi","Julianna","Aisha","Elliott","Miranda","Giselle","Briar","Alayna","Maisie","Harlow","Haven","Romina","Rebecca","Nyla","Nadia","Oaklyn","Kira","Gracelyn","Heidi","Mariana","Daniella","Brinley","Reign","Aliyah","Wrenley","Aviana","Camilla","Kenzie","Avianna","Sylvie","Aniyah","Legacy","Lennox","Jimena","Adelyn","Colette","Henley","Bristol","Ophelia","Joanna","Fernanda","Bianca","Fatima","Destiny","Gwendolyn","Lucille","Lilah","Priscilla","Saoirse","Denver","Blakely","Charlee","Holland","Poppy","Amina","Aurelia","Jolene","Catherine","Emersyn","Lana","Cassidy","Maren","Rosie","Lilith","Hattie","Flora","Alma","Bexley","Demi","Rory","Amaya","Itzel","Mira","Mavis","Mae","Clementine","Skye","Blair","Astrid","Milani","Ainsley","Frankie","Lexie","Savanna","Royalty","Cheyenne","Navy","Kendall","Scarlette","Galilea","Margo","Wynter","Marisol","Karla","Salem","Zelda","Karina","Noa","Elise","Jamie","Sariyah","Nayeli","Winnie","Everlee","Zahra","Kamila","Jessie","Karter","Sky","Holly","Madeleine","Lyra","Noelle","Amari","Helena","Nia","Elle","Kylie","Greta","Lorelei","Joy","Alexa","Addilyn","Monroe","Anika","Luella","Virginia","Carmen","Sylvia","Joelle","Ramona","Selene","Emelia","Johanna","Anais","Zuri","Persephone","Gloria","Robin","Estella","Dorothy","Amalia","Dallas","Helen","Reyna","Brynn","Rylie","Janelle","Yasmin","Antonella","Estelle","Chaya","Anya","Paislee","Roselyn","Zola","Lea","Christine","Tiana","Heaven","Remy","Macy","Lacey","Xiomara","Waverly","Teresa","Promise","Sariah","Kayla","Charli","Averie","Angel","Kalani","Louise","Kara","Kelsey","Jolie","Rosa","Rivka","Simone","Adriana","Malani","Beatrice","Kathryn","Jayleen","Briana","Karen","Dulce","Anaya","Payton","Alivia","Amirah","Alaya","Bonnie","Cara","Calliope","Lina","Natasha","Mikayla","Lilian","Yara","Corinne","Esther","Kinslee","Briella","Kensley","Lyanna","Cleo","Kamryn","Maliyah","Meredith","Annabella","Julieta","Giuliana","Mallory","Frances","Jane","Laurel","Alicia","Gwen","Maci","Harlee","Penny","Jayda","Renata","Evelynn","Raelyn","Melanie","Veronica","Keilani","Paloma","Whitney","Angie","Mckinley","Phoenix","Miley","Collins","Kehlani","Pearl","Aylin","Coraline","Chanel","Estrella","Liana","Emerald","Katelyn","Aubree","Yareli","Renee","Myra","Cadence","Luciana","Milan","Elodie","Celia","Alanna","Ryann","Baylor","Mina","Brenda","Davina","Nala","Tiffany","Scout","Marlowe","Frida","Belle","Esperanza","Kimber","Journey","Angelica","Cecelia","Kendra","Amelie","Rosalia","Fallon","Leighton","Jayla","Kaliyah","Elisa","Maryam","Claudia","Sandra","Magdalena","Leni","Janiyah","Crystal","Adrianna","Giana","Alison","Felicity","Samara","Makayla","Spencer","Sasha","Kamari","Rhea","Belen","Indie","Lylah","Naya","Aileen","Emmalyn","Kataleya","Lillie","Anne","Bethany","Milena","Annika","Linda","Maxine","Kaya","Stevie","Yaretzi","Amoura","Beatrix","Adelina","Ellery","Elora","Iliana","Reina","Zendaya","Harleen","Kynlee","Sloan","Aitana","Armani","Landry","Novalee","Priya","Thalia","Yamileth","Avalynn","Celine","Ellis","Mariam","Charley","Halo","Nancy","Selah","Emmeline","Adley","Rosalyn","Carter","Kinley","Lauryn","Liberty","Viviana","Bria","Danna","Elyse","Joyce","Noor","Oaklee","Rayne","Sonia","Tori","Evalyn","Isa","Kyra","Lilyana","Marianna","Tara","Zariah","Annabel","Calista","Clarissa","Dior","Gracelynn","Halle","Leona","Marceline","Ansley","Caylee","Ellison","Monserrat","Raina","Zayla","Janessa","Karlee","Lorelai","Milana","Samira","Araceli","Bellamy","Berkley","Emmaline","Ensley","Hadleigh","Jenesis","Kailani","Kenia","Kimora","Livia","Opal","Paulina","Vida","Zaira","Zoya","Emory","Rosaline","Selena","Zhuri","Amaris","Angelique","Cambria","Emani","Hana","Katalina","Kyrie","Romina"];
+// ── GIRL NAMES (SSA 2024 top ~600 deduplicated) ──
+const GIRL_RAW=["Olivia","Emma","Charlotte","Amelia","Sophia","Mia","Isabella","Ava","Evelyn","Luna","Harper","Sofia","Camila","Eleanor","Elizabeth","Violet","Scarlett","Emily","Hazel","Aria","Penelope","Chloe","Layla","Mila","Nora","Avery","Riley","Ivy","Lily","Aurora","Willow","Ella","Zoey","Isla","Hannah","Ellie","Stella","Gianna","Paisley","Audrey","Nova","Brooklyn","Bella","Claire","Skylar","Lucy","Savannah","Leah","Naomi","Eliana","Elena","Aaliyah","Lillian","Addison","Natalie","Valentina","Alice","Madelyn","Josephine","Maya","Kinsley","Delilah","Ruby","Kennedy","Emilia","Gabriella","Allison","Hailey","Aubrey","Autumn","Sadie","Nevaeh","Serenity","Genesis","Cora","Everleigh","Caroline","Ariana","Peyton","Madeline","Vivian","Quinn","Kaylee","Lydia","Ayla","Piper","Abigail","Raelynn","Sarah","Jade","Eva","Victoria","Adalynn","Rylee","Liliana","Samantha","Melody","Maria","Brielle","Reagan","Leilani","Adeline","Lucia","Emery","Anna","Athena","Arya","Eloise","Natalia","Clara","Iris","Remi","Rose","London","Lyla","Everly","Catalina","Maeve","Adalyn","Isabelle","Brianna","Zoe","Juliette","Alina","Julia","Sophie","Oakley","Eliza","Millie","Daisy","Margot","Esme","Freya","Ada","Sienna","Bailey","Reese","Diana","Isabel","Hadley","Lola","Cecilia","Juniper","Anastasia","Juliana","Sage","Magnolia","Lena","Phoebe","Genevieve","Journee","Ember","Wren","Elsie","Amara","Sloane","Vivienne","Alaia","Gemma","Dahlia","Vera","Eden","Kaia","Harmony","Thea","Tessa","Charlie","Arabella","Daniela","Ximena","Alexis","Brynlee","Arianna","Finley","Palmer","Lennon","Blake","Olive","Rosalie","Norah","Molly","Presley","Fiona","Margaret","Georgia","June","Willa","Harley","Cali","River","Aspen","Gracie","Elliana","Saylor","Raya","Maia","Callie","Zara","Leila","Marley","Gia","Camille","Teagan","Leia","Adelaide","Serena","Winter","Lyric","Esmeralda","Amira","Myla","Alyssa","Lila","Paige","Brooke","Paris","Jordyn","McKenzie","Ruth","Hayden","Shelby","Vanessa","Raegan","Keira","Ariel","Taylor","Alana","Annalise","Rosemary","Lainey","Kali","Amy","Angelina","Alondra","Braelynn","Dream","Amora","Miracle","Talia","Tatum","Mabel","Hope","Sutton","Celeste","Ariella","Daphne","Ari","Kaylani","Marina","April","Alessandra","Dakota","Hallie","Kyla","Raven","Lexi","Julianna","Aisha","Elliott","Miranda","Giselle","Briar","Alayna","Maisie","Harlow","Haven","Romina","Rebecca","Nyla","Nadia","Oaklyn","Kira","Gracelyn","Heidi","Mariana","Daniella","Brinley","Reign","Aliyah","Wrenley","Aviana","Camilla","Kenzie","Avianna","Sylvie","Aniyah","Legacy","Lennox","Jimena","Adelyn","Colette","Henley","Bristol","Ophelia","Joanna","Fernanda","Bianca","Fatima","Destiny","Gwendolyn","Lucille","Lilah","Priscilla","Saoirse","Denver","Blakely","Charlee","Holland","Poppy","Amina","Aurelia","Jolene","Catherine","Emersyn","Lana","Cassidy","Maren","Rosie","Lilith","Hattie","Flora","Alma","Bexley","Demi","Rory","Amaya","Itzel","Mira","Mavis","Mae","Clementine","Skye","Blair","Astrid","Milani","Ainsley","Frankie","Lexie","Savanna","Royalty","Cheyenne","Navy","Kendall","Scarlette","Galilea","Margo","Wynter","Marisol","Karla","Salem","Zelda","Karina","Noa","Elise","Jamie","Sariyah","Nayeli","Winnie","Everlee","Zahra","Kamila","Jessie","Karter","Sky","Holly","Madeleine","Lyra","Noelle","Amari","Helena","Nia","Elle","Kylie","Greta","Lorelei","Joy","Alexa","Addilyn","Monroe","Anika","Luella","Virginia","Carmen","Sylvia","Joelle","Ramona","Selene","Emelia","Johanna","Anais","Zuri","Persephone","Gloria","Robin","Estella","Dorothy","Amalia","Dallas","Helen","Reyna","Brynn","Rylie","Janelle","Yasmin","Antonella","Estelle","Chaya","Anya","Roselyn","Zola","Lea","Christine","Tiana","Heaven","Remy","Macy","Lacey","Xiomara","Waverly","Teresa","Promise","Sariah","Kayla","Charli","Averie","Angel","Kalani","Louise","Kara","Kelsey","Jolie","Rosa","Rivka","Simone","Adriana","Malani","Beatrice","Kathryn","Jayleen","Briana","Karen","Dulce","Anaya","Payton","Bonnie","Cara","Calliope","Lina","Natasha","Mikayla","Lilian","Yara","Corinne","Esther","Briella","Lyanna","Cleo","Meredith","Annabella","Julieta","Giuliana","Mallory","Frances","Jane","Laurel","Alicia","Gwen","Penny","Renata","Melanie","Veronica","Paloma","Whitney","Phoenix","Pearl","Coraline","Chanel","Estrella","Liana","Emerald","Katelyn","Renee","Myra","Cadence","Luciana","Milan","Elodie","Celia","Alanna","Scout","Marlowe","Frida","Belle","Esperanza","Journey","Angelica","Amelie","Rosalia","Fallon","Leighton","Jayla","Maryam","Claudia","Sandra","Magdalena","Leni","Crystal","Felicity","Samara","Spencer","Sasha","Rhea","Indie","Naya","Aileen","Annika","Linda","Maxine","Stevie","Beatrix","Adelina","Ellery","Elora","Iliana","Reina","Zendaya","Sloan","Aitana","Armani","Landry","Priya","Thalia","Celine","Ellis","Halo","Nancy","Selah","Emmeline","Adley","Rosalyn","Carter","Lauryn","Liberty","Viviana","Bria","Elyse","Joyce","Noor","Sonia","Tori","Calista","Clarissa","Dior","Halle","Leona","Marceline","Ansley","Bellamy","Berkley","Opal","Paulina","Vida","Zaira","Zoya","Selena","Zhuri","Amaris","Angelique","Cambria","Hana","Katalina"];
 
-// ── Phonetic grouping ──
-function phoneticKey(n){
-  let s=n.toLowerCase().trim();
-  s=s.replace(/leigh$/,'lee');s=s.replace(/leah$/,'lee');s=s.replace(/ley$/,'lee');
-  s=s.replace(/lie$/,'lee');s=s.replace(/lee$/,'lee');s=s.replace(/ly$/,'lee');
-  s=s.replace(/lyn+e?$/,'lin');s=s.replace(/line$/,'lin');s=s.replace(/ynn$/,'in');
-  s=s.replace(/anne$/,'an');s=s.replace(/ann$/,'an');s=s.replace(/elle$/,'el');
-  s=s.replace(/^kh/,'k');s=s.replace(/^mck/,'mak');s=s.replace(/^mc/,'mak');
-  s=s.replace(/ph/g,'f');s=s.replace(/ght/g,'t');s=s.replace(/ck/g,'k');
-  s=s.replace(/aa/g,'a');s=s.replace(/ee/g,'e');s=s.replace(/oo/g,'u');
-  s=s.replace(/c([eiy])/g,'s$1');s=s.replace(/eigh/g,'a');s=s.replace(/igh/g,'i');
-  s=s.replace(/ai/g,'a');s=s.replace(/ay/g,'a');s=s.replace(/ae/g,'a');
-  s=s.replace(/ei/g,'e');s=s.replace(/ey/g,'e');s=s.replace(/ie/g,'e');
-  s=s.replace(/([^sct])h/g,'$1');s=s.replace(/^h/,'');
-  s=s.replace(/y/g,'i');s=s.replace(/(.)\1+/g,'$1');
-  s=s.replace(/x/g,'ks');s=s.replace(/qu/g,'kw');
-  return s;
-}
+// ── BOY NAMES (SSA 2024 top ~600 deduplicated) ──
+const BOY_RAW=["Liam","Noah","Oliver","Theodore","James","Henry","Mateo","Elijah","Lucas","William","Benjamin","Jack","Leo","Levi","Alexander","Daniel","Sebastian","Ezra","Michael","Samuel","Hudson","Aiden","Jackson","Owen","Mason","Ethan","Logan","Asher","Thomas","Carter","Lincoln","Grayson","Wyatt","Julian","Luke","Luca","Gabriel","Kai","Miles","Maverick","Jayden","Ezekiel","Josiah","David","Nathan","Caleb","Cooper","Elias","Nolan","Cameron","Dylan","Landon","Jaxon","Isaiah","Santiago","Wesley","Axel","Roman","Christopher","Brooks","Ian","Adrian","Waylon","Eli","Aaron","Charles","Emmett","Rowan","Silas","Bennett","Connor","Colton","Atlas","Jeremiah","Parker","Jordan","Jose","Dominic","Weston","Robert","Angel","Everett","Declan","Milo","Beau","Jace","Archer","Greyson","River","John","Amir","Micah","Giovanni","Andrew","August","Jasper","Christian","Leonardo","Kingston","Theo","Joshua","Adam","Sawyer","Leo","Kayden","Carson","Nathaniel","Braxton","Elliot","Damian","Hunter","Gael","Vincent","Max","Ace","Austin","Walker","Jonah","Ryan","Bryson","George","Antonio","Xavier","Nicholas","Legend","Chase","Ryder","Finn","Zion","Malachi","Rhett","Jude","Dean","Matteo","Carlos","Beckett","Felix","Enzo","Knox","Brayden","Emiliano","Ivan","Tristan","Gavin","Diego","Ashton","Phoenix","Abel","Arlo","Oscar","Barrett","Jesse","Kyrie","Tyler","Jason","Jax","Kian","Messiah","Tucker","Colin","Judah","Maxwell","Caden","Preston","Arthur","Riley","Hayden","Cole","Graham","Zion","Thiago","Miguel","Tobias","Alejandro","Sienna","Damien","Patrick","Myles","Grant","Alan","Hayes","Bear","Emilio","Luka","Tate","Blake","Dawson","Nico","Leon","Russell","Andres","Avery","Jameson","Bentley","Peter","Jasper","Matias","Jett","Soren","Calvin","Remington","Maddox","Harrison","Callum","Kaiden","Rafael","Israel","Xander","Jensen","Brody","Reed","Evan","Louis","Kenneth","Marcus","Colt","Timothy","Ellis","Omar","Edward","Lane","Karter","Reid","Cash","Maximus","Clayton","Zander","Rio","Travis","Mark","Sean","Hugo","Ronan","Malik","Dallas","Orion","Weston","Eric","Steven","Emmanuel","Spencer","Graham","Beckett","King","Lennox","Bodhi","Nash","Cruz","Niko","Hendrix","Desmond","Paxton","Orlando","Chance","Simon","Abraham","Felix","Holden","Griffin","Kane","Sage","Ali","Kash","Brock","Zane","Victor","Corbin","Phoenix","Cyrus","Adonis","Maximiliano","Bruno","Killian","Dante","Derek","Corey","Marcos","Joaquin","Edwin","Martin","Donovan","Sterling","Leonardo","Kobe","Atticus","Gianni","Stetson","Finley","Jaden","Cannon","Caspian","Sullivan","Boone","Shepherd","Kayson","Valentino","Leland","Royce","Ford","Lennon","Anderson","Warren","Princeton","Emerson","Wells","Crew","Apollo","Zachariah","Walter","Elliott","Julius","Oakley","Tatum","Colson","Marshall","Titus","Lawrence","Major","Armani","Moses","Zayden","Koda","Easton","Javier","Remy","Malcolm","Knox","Sinclair","Otis","Benson","Wade","Jonas","Kyler","Henrik","Solomon","Amari","Rhys","Odin","Cade","Franklin","Briggs","Wilder","Zayn","Boston","Kameron","Shane","Gage","Roland","Troy","Ahmad","Kyson","Conor","Ares","Case","Winston","Pierce","Brady","Dax","Caiden","Leonard","Kolton","Rocco","Mitchell","Royal","Bruce","Raymond","Otto","Quincy","Kaden","Dexter","Baylor","Hank","Rayan","Sutton","Ruben","Forrest","Axton","Theo","Hector","Kairo","Jake","Ridge","Scott","Keith","Frederick","Gunner","Makai","Khalil","Memphis","Cohen","Iker","Lucian","Atlas","Denver","Cayden","Bryce","Alberto","Clay","Harlan","Drew","Trey","Kenzo","Dakota","Devin","Kian","Porter","Ty","Conrad","Franco","Crosby","Finnegan","Reece","Grey","Jagger","Zaiden","Landen","Rodrigo","Seven","Hassan","Flynn","Roberto","Watson","Legend","Jayce","Carmelo","Derrick","Byron","Conan","Asa","Pablo","Raiden","Benedict","Moses","Raphael","Cassius","Jasiah","Santino","Lachlan","Magnus","Kole","Blaze","Neil","Tony","Tanner","Darius","Alaric","Saul","Reign","Bodhi","Sterling","Axl","Penn","Reuben","Alonzo","Noel","Heath","Briar","Forest","Dallas","Mac","Cason","Arjun","Kamden","Cedric","Colby","Angelo","Maximo","Johan","Kylan","Quinton","Felix","Yadiel","Ramon","Julien","Rohan","Wesson","Zeke","Callahan","Banks","Rex","Roy","Johan","Reign","Nelson","Omari","Leandro","Khari","Thatcher","Darren","Titan","Mathias","Phillip","Kenji","Salvador","Blaine","Tristan","Reuben","Cal","Anders","Louie","Morgan","Lachlan","Callen","Samson","Emery","Boden","Soren"];
 
-const GROUPS={};
-[...new Set(RAW)].forEach(n=>{
-  const k=phoneticKey(n);
-  if(!GROUPS[k])GROUPS[k]=[];
-  if(!GROUPS[k].includes(n))GROUPS[k].push(n);
+// ── Phonetic key ──
+function pk(n){let s=n.toLowerCase().trim();s=s.replace(/leigh$/,'lee');s=s.replace(/leah$/,'lee');s=s.replace(/ley$/,'lee');s=s.replace(/lie$/,'lee');s=s.replace(/lee$/,'lee');s=s.replace(/ly$/,'lee');s=s.replace(/lyn+e?$/,'lin');s=s.replace(/line$/,'lin');s=s.replace(/ynn$/,'in');s=s.replace(/anne$/,'an');s=s.replace(/ann$/,'an');s=s.replace(/elle$/,'el');s=s.replace(/^kh/,'k');s=s.replace(/^mck/,'mak');s=s.replace(/^mc/,'mak');s=s.replace(/ph/g,'f');s=s.replace(/ght/g,'t');s=s.replace(/ck/g,'k');s=s.replace(/aa/g,'a');s=s.replace(/ee/g,'e');s=s.replace(/oo/g,'u');s=s.replace(/c([eiy])/g,'s$1');s=s.replace(/eigh/g,'a');s=s.replace(/igh/g,'i');s=s.replace(/ai/g,'a');s=s.replace(/ay/g,'a');s=s.replace(/ae/g,'a');s=s.replace(/ei/g,'e');s=s.replace(/ey/g,'e');s=s.replace(/ie/g,'e');s=s.replace(/([^sct])h/g,'$1');s=s.replace(/^h/,'');s=s.replace(/y/g,'i');s=s.replace(/(.)\1+/g,'$1');s=s.replace(/x/g,'ks');s=s.replace(/qu/g,'kw');return s;}
+
+function buildGroups(raw){const m={};[...new Set(raw)].forEach(n=>{const k=pk(n);if(!m[k])m[k]=[];if(!m[k].includes(n))m[k].push(n);});const g={};Object.values(m).forEach(vs=>{const c=vs.sort((a,b)=>a.length-b.length)[0];g[c]=[...vs].sort();});return g;}
+
+const G_GIRLS=buildGroups(GIRL_RAW), G_BOYS=buildGroups(BOY_RAW);
+const ALL_GIRLS=Object.keys(G_GIRLS), ALL_BOYS=Object.keys(G_BOYS);
+
+// Gender meta: track which names are girl/boy
+const GENDER={};
+ALL_GIRLS.forEach(n=>{GENDER[n]='f';});
+ALL_BOYS.forEach(n=>{if(GENDER[n])GENDER[n]='b';else GENDER[n]='m';}); // b=both
+
+// Merge groups
+const GROUPS={...G_GIRLS};
+Object.entries(G_BOYS).forEach(([k,v])=>{
+  if(GROUPS[k]){GROUPS[k]=[...new Set([...GROUPS[k],...v])].sort();}
+  else GROUPS[k]=v;
 });
-const PGROUPS={};
-Object.values(GROUPS).forEach(vs=>{
-  const canon=vs.sort((a,b)=>a.length-b.length)[0];
-  PGROUPS[canon]=[...vs].sort();
-});
-const ALL=Object.keys(PGROUPS);
 
-// ── State ──
-const SKEY='babynames-v5';
-let state={ratings:{},comps:[],elim:{},favs:{},spellings:{}};
-let pair=null, curView='pick';
-
-function load(){
-  try{const d=JSON.parse(localStorage.getItem(SKEY));if(d){state=d;if(!state.spellings)state.spellings={};}}catch{}
+function namesForFilter(f){
+  if(f==='girl')return ALL_GIRLS;
+  if(f==='boy')return ALL_BOYS;
+  return [...new Set([...ALL_GIRLS,...ALL_BOYS])];
 }
-function save(){try{localStorage.setItem(SKEY,JSON.stringify(state));}catch{}}
-function pool(){return ALL.filter(n=>!state.elim[n]);}
-function dispName(c){return state.spellings[c]||c;}
 
 // ── ELO ──
-function elo(a,b,winner){
-  const K=32,ra=state.ratings[a]||1000,rb=state.ratings[b]||1000;
-  const ea=1/(1+Math.pow(10,(rb-ra)/400)),eb=1/(1+Math.pow(10,(ra-rb)/400));
-  if(!winner){state.ratings[a]=ra-16;state.ratings[b]=rb-16;return;}
-  state.ratings[a]=ra+K*((winner===a?1:0)-ea);
-  state.ratings[b]=rb+K*((winner===b?1:0)-eb);
-}
+function elo(a,b,w){const K=32,ra=S.ratings[a]||1000,rb=S.ratings[b]||1000,ea=1/(1+Math.pow(10,(rb-ra)/400)),eb=1/(1+Math.pow(10,(ra-rb)/400));if(!w){S.ratings[a]=ra-16;S.ratings[b]=rb-16;return;}S.ratings[a]=ra+K*((w===a?1:0)-ea);S.ratings[b]=rb+K*((w===b?1:0)-eb);}
 
 // ── Pairing ──
-function pick(){
-  const p=pool();
-  if(p.length<2)return null;
-  const counts={};p.forEach(n=>counts[n]=0);
-  state.comps.forEach(([a,b])=>{if(a in counts)counts[a]++;if(b in counts)counts[b]++;});
-  const favArr=p.filter(n=>state.favs[n]);
-  const top20=[...p].sort((a,b)=>(state.ratings[b]||1000)-(state.ratings[a]||1000)).slice(0,20);
-  const least=[...p].sort((a,b)=>counts[a]-counts[b]).slice(0,Math.max(20,p.length*.15));
-  const elite=[...new Set([...favArr,...top20])];
+function pickPair(pool,favs){
+  if(pool.length<2)return null;
+  const cnt={};pool.forEach(n=>cnt[n]=0);
+  S.comps.forEach(([a,b])=>{if(a in cnt)cnt[a]++;if(b in cnt)cnt[b]++;});
+  const fa=pool.filter(n=>favs[n]);
+  const t20=[...pool].sort((a,b)=>(S.ratings[b]||1000)-(S.ratings[a]||1000)).slice(0,20);
+  const ls=[...pool].sort((a,b)=>cnt[a]-cnt[b]).slice(0,Math.max(20,pool.length*.15));
+  const el=[...new Set([...fa,...t20])];
   const r=Math.random();let pA,pB;
-  if(r<.4&&elite.length>=2){pA=elite;pB=elite;}
-  else if(r<.7&&elite.length>=1){pA=elite;pB=least;}
-  else{pA=least;pB=p;}
+  if(r<.4&&el.length>=2){pA=el;pB=el;}
+  else if(r<.7&&el.length>=1){pA=el;pB=ls;}
+  else{pA=ls;pB=pool;}
   let a=pA[Math.floor(Math.random()*pA.length)],b,t=0;
   do{b=pB[Math.floor(Math.random()*pB.length)];t++;}while(b===a&&t<80);
   return a!==b?[a,b]:null;
 }
 
-// ── DOM refs ──
+// ── State ──
+const SKEY='babynames-v6';
+let S={ratings:{},comps:[],elim:{},favs:{},spellings:{},filter:'girl'};
+let pair=null,curView='pick';
+
+function load(){try{const d=JSON.parse(localStorage.getItem(SKEY));if(d){S=d;if(!S.spellings)S.spellings={};if(!S.filter)S.filter='girl';}}catch{}}
+function save(){try{localStorage.setItem(SKEY,JSON.stringify(S));}catch{}}
+function pool(){return namesForFilter(S.filter).filter(n=>!S.elim[n]);}
+function dn(c){return S.spellings[c]||c;}
+function genderLabel(n){const g=GENDER[n];return g==='f'?'♀':g==='m'?'♂':g==='b'?'⚥':'';}
+function genderClass(n){const g=GENDER[n];return g==='f'?'f':g==='m'?'m':'f';}
+
+// ── DOM ──
 const $=id=>document.getElementById(id);
 const statsLine=$('statsLine'),favTab=$('favTab'),footNote=$('footNote');
 const cardL=$('cardL'),cardR=$('cardR'),nameL=$('nameL'),nameR=$('nameR'),varL=$('varL'),varR=$('varR');
-const heartL=$('heartL'),heartR=$('heartR'),neitherBtn=$('neitherBtn');
-const elimL=$('elimL'),elimR=$('elimR');
+const heartL=$('heartL'),heartR=$('heartR'),elimL=$('elimL'),elimR=$('elimR'),neitherBtn=$('neitherBtn');
 const progBar=$('progBar'),progTxt=$('progTxt');
 const viewPick=$('viewPick'),pickEmpty=$('pickEmpty');
 const viewRanks=$('viewRanks'),viewFavs=$('viewFavs'),viewSpell=$('viewSpell');
@@ -286,26 +211,24 @@ const views={pick:viewPick,ranks:viewRanks,favs:viewFavs,spell:viewSpell};
 
 function updateStats(){
   const p=pool();
-  statsLine.textContent=`${p.length} remaining · ${state.comps.length} compared · ${Object.keys(state.elim).length} eliminated`;
-  favTab.textContent=`Favs (${Object.keys(state.favs).length})`;
-  footNote.textContent=`${ALL.length} unique names`;
-  const pct=Math.min(100,state.comps.length/2);
-  progBar.style.width=pct+'%';
-  const c=state.comps.length;
+  statsLine.textContent=`${p.length} remaining · ${S.comps.length} compared · ${Object.keys(S.elim).length} eliminated`;
+  favTab.textContent=`Favs (${Object.keys(S.favs).length})`;
+  const all=namesForFilter(S.filter);
+  footNote.textContent=`${all.length} ${S.filter==='both'?'total':S.filter} names`;
+  progBar.style.width=Math.min(100,S.comps.length/2)+'%';
+  const c=S.comps.length;
   progTxt.textContent=c<30?'Keep going...':c<100?'Getting interesting!':c<250?'Rankings shaping up!':'Great data!';
 }
 
 function renderPair(){
   if(!pair){viewPick.classList.add('hidden');pickEmpty.classList.remove('hidden');return;}
   viewPick.classList.remove('hidden');pickEmpty.classList.add('hidden');
-  nameL.textContent=dispName(pair[0]);nameR.textContent=dispName(pair[1]);
-  const vl=PGROUPS[pair[0]]||[];const vr=PGROUPS[pair[1]]||[];
+  nameL.textContent=dn(pair[0]);nameR.textContent=dn(pair[1]);
+  const vl=GROUPS[pair[0]]||[],vr=GROUPS[pair[1]]||[];
   varL.textContent=vl.length>1?`+${vl.length-1} spelling${vl.length>2?'s':''}`:'';
   varR.textContent=vr.length>1?`+${vr.length-1} spelling${vr.length>2?'s':''}`:'';
-  heartL.textContent=state.favs[pair[0]]?'♥':'♡';
-  heartL.className='heart-btn'+(state.favs[pair[0]]?' on':'');
-  heartR.textContent=state.favs[pair[1]]?'♥':'♡';
-  heartR.className='heart-btn'+(state.favs[pair[1]]?' on':'');
+  heartL.textContent=S.favs[pair[0]]?'♥':'♡';heartL.className='heart-btn'+(S.favs[pair[0]]?' on':'');
+  heartR.textContent=S.favs[pair[1]]?'♥':'♡';heartR.className='heart-btn'+(S.favs[pair[1]]?' on':'');
   cardL.className='card left';cardR.className='card right';
 }
 
@@ -313,134 +236,75 @@ let animLock=false;
 
 function doPick(side){
   if(!pair||animLock)return;animLock=true;
-  const w=side==='left'?pair[0]:pair[1],l=side==='left'?pair[1]:pair[0];
-  cardL.classList.add(side==='left'?'win':'lose');
-  cardR.classList.add(side==='right'?'win':'lose');
-  setTimeout(()=>{
-    elo(w,l,w);state.comps.push([pair[0],pair[1],w]);save();
-    pair=pick();renderPair();updateStats();animLock=false;
-  },250);
+  const w=pair[side==='left'?0:1],l=pair[side==='left'?1:0];
+  cardL.classList.add(side==='left'?'win':'lose');cardR.classList.add(side==='right'?'win':'lose');
+  setTimeout(()=>{elo(w,l,w);S.comps.push([pair[0],pair[1],w]);save();pair=pickPair(pool(),S.favs);renderPair();updateStats();animLock=false;},250);
 }
 
 function doNeither(){
   if(!pair||animLock)return;animLock=true;
   cardL.classList.add('lose');cardR.classList.add('lose');
-  setTimeout(()=>{
-    elo(pair[0],pair[1],null);state.comps.push([pair[0],pair[1],null]);
-    state.elim[pair[0]]=1;state.elim[pair[1]]=1;
-    delete state.favs[pair[0]];delete state.favs[pair[1]];
-    save();pair=pick();renderPair();updateStats();animLock=false;
-  },250);
+  setTimeout(()=>{elo(pair[0],pair[1],null);S.comps.push([pair[0],pair[1],null]);S.elim[pair[0]]=1;S.elim[pair[1]]=1;delete S.favs[pair[0]];delete S.favs[pair[1]];save();pair=pickPair(pool(),S.favs);renderPair();updateStats();animLock=false;},250);
 }
 
 function elimOne(side){
   if(!pair||animLock)return;animLock=true;
-  const idx=side==='left'?0:1;
-  const card=side==='left'?cardL:cardR;
-  const gone=pair[idx], keep=pair[1-idx];
+  const idx=side==='left'?0:1,card=side==='left'?cardL:cardR;
+  const gone=pair[idx],keep=pair[1-idx];
   card.classList.add('lose');
   setTimeout(()=>{
-    state.elim[gone]=1;delete state.favs[gone];
-    state.ratings[gone]=(state.ratings[gone]||1000)-16;
-    save();
-    // Find a replacement that isn't the kept name
+    S.elim[gone]=1;delete S.favs[gone];S.ratings[gone]=(S.ratings[gone]||1000)-16;save();
     const p=pool().filter(n=>n!==keep);
-    if(p.length===0){pair=null;}
-    else{
-      const replacement=p[Math.floor(Math.random()*p.length)];
-      pair=side==='left'?[replacement,keep]:[keep,replacement];
-    }
+    if(p.length===0)pair=null;
+    else{const rep=p[Math.floor(Math.random()*p.length)];pair=side==='left'?[rep,keep]:[keep,rep];}
     renderPair();updateStats();animLock=false;
   },250);
 }
 
-function toggleFav(name){
-  if(state.favs[name])delete state.favs[name];else state.favs[name]=1;
-  save();updateStats();
-  if(curView==='pick')renderPair();
-  if(curView==='ranks')renderRanks();
-  if(curView==='favs')renderFavsList();
-}
+function toggleFav(name){if(S.favs[name])delete S.favs[name];else S.favs[name]=1;save();updateStats();if(curView==='pick')renderPair();if(curView==='ranks')renderRanks();if(curView==='favs')renderFavsList();}
+function eliminate(name){S.elim[name]=1;delete S.favs[name];save();updateStats();if(pair&&(pair[0]===name||pair[1]===name)){pair=pickPair(pool(),S.favs);renderPair();}if(curView==='ranks')renderRanks();if(curView==='favs')renderFavsList();}
 
-function eliminate(name){
-  state.elim[name]=1;delete state.favs[name];save();updateStats();
-  if(pair&&(pair[0]===name||pair[1]===name)){pair=pick();renderPair();}
-  if(curView==='ranks')renderRanks();
-  if(curView==='favs')renderFavsList();
-}
-
-// ── Rank row HTML ──
 function rowHTML(name,score,rank,isFav,max,min){
-  const range=max-min||1;const pct=((score-min)/range)*100;
+  const range=max-min||1,pct=((score-min)/range)*100;
   const rc=rank===1?' g':rank===2?' s':rank===3?' b':'';
-  const variants=PGROUPS[name]||[name];
-  const hasSpell=variants.length>1;
-  const chosenSpell=state.spellings[name];
-  const spellLabel=chosenSpell?`✓ ${chosenSpell}`:`${variants.length} spellings →`;
-  return `<div class="row">
-    <div class="row-top">
-      <span class="row-rank${rc}">${rank}</span>
-      <span class="row-name">${dispName(name)}</span>
-      <div style="flex:1"></div>
-      <button class="row-heart${isFav?' on':''}" onclick="toggleFav('${name}')">${isFav?'♥':'♡'}</button>
-      <button class="row-x" onclick="eliminate('${name}')">✕</button>
-    </div>
-    <div class="bar-bg"><div class="bar-fg" style="width:${Math.max(6,pct)}%"></div></div>
-    <div class="row-bot">
-      <span class="row-score">${Math.round(score)} ELO</span>
-      ${hasSpell?`<button class="spell-link" onclick="openSpell('${name}')">${spellLabel}</button>`:''}
-    </div>
-  </div>`;
+  const vs=GROUPS[name]||[name],hasS=vs.length>1;
+  const cs=S.spellings[name];
+  const sl=cs?`✓ ${cs}`:`${vs.length} spellings →`;
+  const gl=genderLabel(name),gc=genderClass(name);
+  return `<div class="row"><div class="row-top"><span class="row-rank${rc}">${rank}</span><span class="row-name">${dn(name)}</span>${S.filter==='both'?`<span class="row-gender ${gc}">${gl}</span>`:''}<div style="flex:1"></div><button class="row-heart${isFav?' on':''}" onclick="toggleFav('${name}')">${isFav?'♥':'♡'}</button><button class="row-x" onclick="eliminate('${name}')">✕</button></div><div class="bar-bg"><div class="bar-fg" style="width:${Math.max(6,pct)}%"></div></div><div class="row-bot"><span class="row-score">${Math.round(score)} ELO</span>${hasS?`<button class="spell-link" onclick="openSpell('${name}')">${sl}</button>`:''}</div></div>`;
 }
 
 let rankShowN=25;
-
 function renderRanks(){
-  const ranked=Object.entries(state.ratings).filter(([n])=>!state.elim[n]).sort((a,b)=>b[1]-a[1]);
-  if(ranked.length===0){
-    viewRanks.innerHTML=`<div class="empty"><p class="empty-icon">💭</p><p class="empty-txt">Start comparing to build rankings!</p><button class="cta" onclick="switchView('pick')">Start</button></div>`;
-    return;
-  }
-  const shown=ranked.slice(0,rankShowN);
-  const max=shown[0][1],min=shown[shown.length-1][1];
-  let h=`<p class="list-hdr">Top names from ${state.comps.length} comparisons:</p>`;
-  shown.forEach(([n,s],i)=>{h+=rowHTML(n,s,i+1,!!state.favs[n],max,min);});
+  const p=pool();
+  const ranked=Object.entries(S.ratings).filter(([n])=>!S.elim[n]&&p.includes(n)).sort((a,b)=>b[1]-a[1]);
+  if(ranked.length===0){viewRanks.innerHTML=`<div class="empty"><p class="empty-icon">💭</p><p class="empty-txt">Start comparing to build rankings!</p><button class="cta" onclick="switchView('pick')">Start</button></div>`;return;}
+  const shown=ranked.slice(0,rankShowN),max=shown[0][1],min=shown[shown.length-1][1];
+  let h=`<p class="list-hdr">Top names from ${S.comps.length} comparisons:</p>`;
+  shown.forEach(([n,s],i)=>{h+=rowHTML(n,s,i+1,!!S.favs[n],max,min);});
   if(ranked.length>rankShowN)h+=`<button class="more-btn" onclick="rankShowN+=25;renderRanks()">Show more</button>`;
   viewRanks.innerHTML=h;
 }
 
 function renderFavsList(){
-  const fl=Object.keys(state.favs).filter(n=>!state.elim[n]).sort((a,b)=>(state.ratings[b]||1000)-(state.ratings[a]||1000));
-  if(fl.length===0){
-    viewFavs.innerHTML=`<div class="empty"><p class="empty-icon">♡</p><p class="empty-txt">No favorites yet! Tap the heart while comparing.</p><button class="cta" onclick="switchView('pick')">Start</button></div>`;
-    return;
-  }
-  const max=state.ratings[fl[0]]||1000,min=state.ratings[fl[fl.length-1]]||1000;
+  const p=pool();
+  const fl=Object.keys(S.favs).filter(n=>!S.elim[n]&&p.includes(n)).sort((a,b)=>(S.ratings[b]||1000)-(S.ratings[a]||1000));
+  if(fl.length===0){viewFavs.innerHTML=`<div class="empty"><p class="empty-icon">♡</p><p class="empty-txt">No favorites yet! Tap the heart while comparing.</p><button class="cta" onclick="switchView('pick')">Start</button></div>`;return;}
+  const max=S.ratings[fl[0]]||1000,min=S.ratings[fl[fl.length-1]]||1000;
   let h=`<p class="list-hdr">Your ${fl.length} favorite${fl.length>1?'s':''}:</p>`;
-  fl.forEach((n,i)=>{h+=rowHTML(n,state.ratings[n]||1000,i+1,true,max,min);});
+  fl.forEach((n,i)=>{h+=rowHTML(n,S.ratings[n]||1000,i+1,true,max,min);});
   viewFavs.innerHTML=h;
 }
 
 function openSpell(name){
   switchView('spell');
-  const variants=PGROUPS[name]||[name];
-  let h=`<button class="back-btn" onclick="switchView('favs')">← Back</button>`;
-  h+=`<h2 class="spell-title">Choose your spelling</h2>`;
-  h+=`<p class="spell-sub">All versions of "${name}"</p>`;
-  variants.forEach(v=>{
-    const chosen=state.spellings[name]===v;
-    h+=`<button class="spell-opt${chosen?' chosen':''}" onclick="pickSpelling('${name}','${v}')">
-      <span>${v}</span>${chosen?'<span class="spell-check">✓</span>':''}
-    </button>`;
-  });
+  const vs=GROUPS[name]||[name];
+  let h=`<button class="back-btn" onclick="switchView('favs')">← Back</button><h2 class="spell-title">Choose your spelling</h2><p class="spell-sub">All versions of "${name}"</p>`;
+  vs.forEach(v=>{const ch=S.spellings[name]===v;h+=`<button class="spell-opt${ch?' chosen':''}" onclick="pickSpelling('${name}','${v}')"><span>${v}</span>${ch?'<span class="spell-check">✓</span>':''}</button>`;});
   viewSpell.innerHTML=h;
 }
 window.openSpell=openSpell;
-
-function pickSpelling(canon,spell){
-  state.spellings[canon]=spell;save();
-  openSpell(canon);// re-render
-}
+function pickSpelling(c,s){S.spellings[c]=s;save();openSpell(c);}
 window.pickSpelling=pickSpelling;
 
 function switchView(v){
@@ -454,12 +318,17 @@ function switchView(v){
 }
 window.switchView=switchView;
 
-// ── Nav ──
-document.querySelectorAll('.nav button').forEach(b=>{
-  b.addEventListener('click',()=>switchView(b.dataset.v));
-});
+function setFilter(f){
+  S.filter=f;save();
+  document.querySelectorAll('.gender-bar button').forEach(b=>{b.className=b.dataset.g===f?'on':''});
+  pair=pickPair(pool(),S.favs);renderPair();updateStats();
+  if(curView==='ranks')renderRanks();
+  if(curView==='favs')renderFavsList();
+}
 
-// ── Card events ──
+// ── Events ──
+document.querySelectorAll('.nav button').forEach(b=>{b.addEventListener('click',()=>switchView(b.dataset.v));});
+document.querySelectorAll('.gender-bar button').forEach(b=>{b.addEventListener('click',()=>setFilter(b.dataset.g));});
 cardL.addEventListener('click',()=>doPick('left'));
 cardR.addEventListener('click',()=>doPick('right'));
 heartL.addEventListener('click',e=>{e.stopPropagation();if(pair)toggleFav(pair[0]);renderPair();});
@@ -467,21 +336,16 @@ heartR.addEventListener('click',e=>{e.stopPropagation();if(pair)toggleFav(pair[1
 elimL.addEventListener('click',e=>{e.stopPropagation();elimOne('left');});
 elimR.addEventListener('click',e=>{e.stopPropagation();elimOne('right');});
 neitherBtn.addEventListener('click',doNeither);
-$('resetBtn').addEventListener('click',()=>{
-  if(confirm('Reset everything?')){
-    state={ratings:{},comps:[],elim:{},favs:{},spellings:{}};
-    localStorage.removeItem(SKEY);rankShowN=25;
-    pair=pick();renderPair();updateStats();switchView('pick');
-  }
-});
+$('resetBtn').addEventListener('click',()=>{if(confirm('Reset everything?')){S={ratings:{},comps:[],elim:{},favs:{},spellings:{},filter:S.filter};localStorage.removeItem(SKEY);rankShowN=25;save();pair=pickPair(pool(),S.favs);renderPair();updateStats();switchView('pick');}});
 
-// ── Expose for inline handlers ──
-window.toggleFav=toggleFav;window.eliminate=eliminate;window.rankShowN=rankShowN;
+// Expose for inline handlers
+window.toggleFav=toggleFav;window.eliminate=eliminate;window.renderRanks=renderRanks;
 Object.defineProperty(window,'rankShowN',{get:()=>rankShowN,set:v=>{rankShowN=v;}});
-window.renderRanks=renderRanks;
 
 // ── Init ──
-load();pair=pick();renderPair();updateStats();
+load();
+document.querySelectorAll('.gender-bar button').forEach(b=>{b.className=b.dataset.g===S.filter?'on':''});
+pair=pickPair(pool(),S.favs);renderPair();updateStats();
 </script>
 
 </body>
